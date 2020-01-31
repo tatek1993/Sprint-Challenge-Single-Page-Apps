@@ -18,7 +18,7 @@ const CharacterCard = props => {
       <p>Species: {props.species}</p>
       <img src={props.image}/>
     </CharacterDiv>
-  )
+  );
 }
 
 
