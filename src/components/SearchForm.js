@@ -4,22 +4,23 @@ import {useHistory} from "react-router-dom";
 
 export default function SearchForm(props) {
  
-  const [searchTerm, setSearchTerm] = useState({name: ""});
-
   const [searchResults, setSearchResults] = useState([]);
 
+  const [searchTerm, setSearchTerm] = useState({name: ""});
   
   useEffect(() => {
-    const results = props.data.map(character => {
+    const results = props.data.filter(character => {
       console.log(searchTerm);
-      character.name.toLowerCase().includes(searchTerm.toLowerCase())
+
+      return character.name.toLowerCase().includes(searchTerm.toLowerCase())
       });
       setSearchResults(results);
   }, [searchTerm]);
 
   const handleChanges = e => {
-    // setSearchTerm(e.target.value);
-    setSearchTerm({...searchTerm});
+    setSearchTerm(e.target.value);
+    // console.log("handle changes", searchTerm, {...searchTerm})
+    // setSearchTerm({...searchTerm});
     
   };
 
@@ -47,7 +48,7 @@ export default function SearchForm(props) {
      <div className="characters-list">
        <ul>
          {searchResults.map(chara => (
-           <li key={chara}>{chara}</li>
+           <li key={chara.name}>{chara.name}</li>
          ))}
        </ul>
      </div>
