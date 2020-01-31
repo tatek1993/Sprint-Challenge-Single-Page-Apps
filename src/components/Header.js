@@ -1,18 +1,36 @@
 import React from "react";
-import {Link, Switch, Route} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
+import styled from "styled-components";
+
+const HeaderStyle = styled.h1 `
+  color: turquoise;
+  font-weight: bold;
+  font-size: 4rem;
+  text-shadow: 3px 3px green;
+`
+
+const NavStyling = styled.div `
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-decoration: none;
+`
 
 export default function Header() {
   return (
     <header className="ui centered">
-      <h1 className="ui center">Rick &amp; Morty Fan Page</h1>
-      <div className="nav-links">
-        <Link className="welcomepage-link" to="/">
+      <HeaderStyle className="ui center">Rick &amp; Morty Fan Page</HeaderStyle>
+      <NavStyling className="nav-links">
+        <NavLink className="welcomepage-link" to="/">
           Home
-        </Link>
-        <Link to="/character-list">
+        </NavLink>
+        <NavLink to="/character">
           Characters
-        </Link>
-      </div>
+        </NavLink>
+        <NavLink to="/search">
+          Search
+        </NavLink>
+      </NavStyling>
     </header>
 
    

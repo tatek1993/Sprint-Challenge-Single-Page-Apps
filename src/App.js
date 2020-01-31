@@ -4,11 +4,16 @@ import {Link, Switch, Route} from "react-router-dom";
 import CharacterCard from "./components/CharacterCard";
 import CharacterList from "./components/CharacterList";
 import WelcomePage from "./components/WelcomePage";
+import SearchForm from "./components/SearchForm";
+import styled from "styled-components";
 
+const MainStyling = styled.div `
+  background-color: greenyellow;
+`
 
 export default function App() {
   return (
-    <main>
+    <MainStyling>
       <Header />
       <Switch>
       <Route path="/character/:characterID">
@@ -19,11 +24,15 @@ export default function App() {
         <CharacterList />
       </Route>
 
+      <Route path="/search">
+        <SearchForm characters={[]}/>
+      </Route>
+
       <Route path="/">
-        <CharacterList />
+        <WelcomePage />
       </Route>
 
     </Switch>
-    </main>
+    </MainStyling>
   );
 }

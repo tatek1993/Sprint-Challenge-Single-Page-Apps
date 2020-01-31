@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import CharacterCard from "./CharacterCard";
+import SearchForm from "./SearchForm";
 
 const ACLayout = styled.section `
   display:flex;
@@ -13,12 +14,12 @@ const ACLayout = styled.section `
 
 
 
-export default function CharacterList() {
+export default function CharacterList(props) {
   const [characters, setCharacters] = useState([]);
   // TODO: Add useState to track data from useEffect
 
   useEffect(() => {
-    axios.get("https://rickandmortyapi.com/api/")
+    axios.get("https://rickandmortyapi.com/api/character")
       .then(res => {
         console.log("this is the res.data", res.data);
         setCharacters(res.data.results);
@@ -46,4 +47,5 @@ export default function CharacterList() {
     </ACLayout>
   )
 };
+
 
