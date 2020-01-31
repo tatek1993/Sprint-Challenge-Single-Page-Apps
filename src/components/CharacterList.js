@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import axios from "axios";
 import styled from "styled-components";
 import CharacterCard from "./CharacterCard";
 
@@ -32,7 +32,18 @@ export default function CharacterList() {
 
   return (
     <ACLayout className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
+      {characters.map(c => {
+        return (
+          <CharacterCard
+            key={c.id}
+            name={c.name}
+            gender={c.gender}
+            species={c.species}
+            image={c.image}
+            />
+        )
+      })}
     </ACLayout>
-  );
-}
+  )
+};
+

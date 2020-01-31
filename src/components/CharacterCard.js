@@ -16,7 +16,7 @@ const CharacterCard = props => {
       <h2>Character Name: {props.name}</h2>
       <p>Gender: {props.gender}</p>
       <p>Species: {props.species}</p>
-      <img src={props.image}/>
+      <img src={props.image} alt={props.name}/>
     </CharacterDiv>
   );
 }
@@ -24,6 +24,4 @@ const CharacterCard = props => {
 
 
 
-export default function CharacterCard() {
-  return <span>todo: character</span>;
-}
+export default CharacterCard;
