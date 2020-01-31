@@ -15,6 +15,13 @@ const NavStyling = styled.div `
   justify-content: space-around;
   text-decoration: none;
 `
+const NavLinkStyle = styled.a `
+  text-decoration: none;
+  color: turquoise;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px green;
+`
 
 export default function Header() {
   return (

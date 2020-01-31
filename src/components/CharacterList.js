@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import CharacterCard from "./CharacterCard";
 import SearchForm from "./SearchForm";
+import {useHistory} from "react-router-dom";
 
 const ACLayout = styled.section `
   display:flex;
@@ -11,8 +12,6 @@ const ACLayout = styled.section `
   justify-content: space-evenly;
   align-items: center;
 `
-
-
 
 export default function CharacterList(props) {
   const [characters, setCharacters] = useState([]);
@@ -32,19 +31,22 @@ export default function CharacterList(props) {
   }, []);
 
   return (
-    <ACLayout className="character-list">
-      {characters.map(c => {
-        return (
-          <CharacterCard
-            key={c.id}
-            name={c.name}
-            gender={c.gender}
-            species={c.species}
-            image={c.image}
+    <div>
+      <SearchForm data={characters} />
+      <ACLayout className="character-list">
+        {characters.map(c => {
+          return (
+            <CharacterCard
+              key={c.id}
+              name={c.name}
+              gender={c.gender}
+              species={c.species}
+              image={c.image}
             />
-        )
-      })}
-    </ACLayout>
+          )        
+        })}     
+      </ACLayout>
+    </div>
   )
 };
 

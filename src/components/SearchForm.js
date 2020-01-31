@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import {useHistory} from "react-router-dom";
 
 export default function SearchForm(props) {
  
@@ -7,21 +8,26 @@ export default function SearchForm(props) {
 
   const [searchResults, setSearchResults] = useState([]);
 
+  
   useEffect(() => {
-    const results = props.characters.filter(character =>
-      props.characters.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+    const results = props.data.map(character => {
+      console.log(searchTerm);
+      character.name.toLowerCase().includes(searchTerm.toLowerCase())
+      });
       setSearchResults(results);
   }, [searchTerm]);
 
   const handleChanges = e => {
     // setSearchTerm(e.target.value);
     setSearchTerm({...searchTerm});
+    
   };
 
   const submitForm = e => {
     e.preventDefault();
-    setSearchResults(props.data)
+    setSearchResults(props.searchResults)
+    // const useHistory = useHistory()
+    // useHistory.push("/character")
   };
 
   return (
@@ -29,13 +35,14 @@ export default function SearchForm(props) {
      <form onSubmit = {submitForm}>
      <label htmlFor="search">Search:</label>
         <input
-          id="searc"
+          id="search"
           type="text"
           name="name"
           placeholder="Search"
-          value={searchTerm}
+          value={searchTerm.name}
           onChange={handleChanges}
         />
+        <button type="submit">Search</button>
      </form>
      <div className="characters-list">
        <ul>
