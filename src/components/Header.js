@@ -34,9 +34,7 @@ export default function Header() {
         <NavLink to="/character">
           Characters
         </NavLink>
-        <NavLink to="/search">
-          Search
-        </NavLink>
+        
       </NavStyling>
     </header>
 

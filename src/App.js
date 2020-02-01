@@ -24,9 +24,9 @@ export default function App() {
         <CharacterList />
       </Route>
 
-      <Route path="/search">
+      {/* <Route path="/search">
         <SearchForm characters={[]}/>
-      </Route>
+      </Route> */}
 
       <Route path="/">
         <WelcomePage />
